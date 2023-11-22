@@ -45,9 +45,7 @@ A list of dependancies can be found in **conda_env_list/link_prediction.yaml**.
 Best run with GPU available, in addition SEAL-based link prediction is paralelizeable on CPUs. Negative links generation by default uses a node degree distribution-preserving sampling function (sample_degree_preserving_distribution) which can take long time depending on graph size, however it only needs to be run once for a given link-sampling seed after which it is stored in data folder; alternatively an approximating function (sample_distribution) can be used with quicker runtime.
 
 ## Data
-# TODO, upload data and add link to data
-The reaction graph used in [1] is available (here)[].
-The tabular version of the reaction graph, used for training Chemformer, is available (here)[].
+The reaction graph used in [1] is available (here)[https://doi.org/ 10.5281/zenodo.10171188].
 
 ## Contributors
 - Emma Rydholm
