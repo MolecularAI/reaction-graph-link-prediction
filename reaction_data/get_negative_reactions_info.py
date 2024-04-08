@@ -7,7 +7,6 @@ import itertools
 import numpy as np
 import pandas as pd
 import torch
-import networkx as nx
 import torch_geometric
 import matplotlib.pyplot as plt
 
