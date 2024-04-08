@@ -56,6 +56,8 @@ parser.add_argument("--use_embedding", action="store_true")
 parser.add_argument("--p_threshold", type=float, default=0.9)
 parser.add_argument("--pos_weight_loss", type=float, default=1.0)
 
+args = parser.parse_args()
+
 # Read settings from supplied settings.txt file
 if args.settings_path is not None:
     module_path = str(args.settings_path)
