@@ -73,9 +73,7 @@ class ReactionGraph(InMemoryDataset):
         # Create edge adjacency list
         adj_list = graph.get_edges(
             eprops=[
-                graph.edge_properties["random fold"],
-                graph.edge_properties["time fold"],
-                graph.edge_properties["date_rank"],
+                graph.edge_properties["random fold"]
             ]
         )
 
@@ -86,8 +84,6 @@ class ReactionGraph(InMemoryDataset):
 
         # Add folds to use when creating train/val/test splits
         self.data.random_folds = adj_list[:, 2]
-        self.data.time_folds = adj_list[:, 3]
-        self.data.time_rank = adj_list[:, 4]
 
         # Confirm upper triangular graph
         row, col = self.data.edge_index
@@ -106,8 +102,6 @@ class ReactionGraph(InMemoryDataset):
         # respectively.
         if self.splitting == "random":
             self.fold = self.data.random_folds
-        elif self.splitting == "time":
-            self.fold = self.data.time_folds
 
         fraction_test = np.sum(self.fold == 10) / len(self.fold)
 
@@ -210,20 +204,6 @@ class ReactionGraph(InMemoryDataset):
             self.fold = self.data.random_folds[0]
             # Initialize all edges as to belong in train set
             edge_split_label = np.zeros(num_edges, dtype=int)
-            # Test set
-            edge_split_label[self.fold == 10] = 2
-            # Validation set
-            edge_split_label[self.fold == valid_fold] = 1
-
-        elif self.splitting == "time":
-            # The train edges where added before any of the edges in validation and train.
-            # All edges in validation set was added before all edges in the test set.
-            self.fold = self.data.time_folds[0]
-            # Initialize all edges as to not belong to any set
-            edge_split_label = 20 * np.ones(num_edges, dtype=int)
-            # Training set
-            for i in range(valid_fold):
-                edge_split_label[self.fold == i] = 0
             # Test set
             edge_split_label[self.fold == 10] = 2
             # Validation set
