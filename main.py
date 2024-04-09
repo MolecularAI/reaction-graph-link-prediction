@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser(description="SEAL")
 parser.add_argument("-s", "--settings_path", type=str, default=None)
 parser.add_argument("-n", "--name", type=str, default="no_name")
 parser.add_argument("-g", "--graph_path", type=str, default=None)
-parser.add_argument("--pre-trained_model_path", type=str, default=None)
+parser.add_argument("--pre_trained_model_path", type=str, default=None)
 # Subgraphs in SEAL
 parser.add_argument("--num_hops", type=int, default=1)
 parser.add_argument("--ratio_per_hop", type=float, default=1.0)
@@ -20,8 +20,8 @@ parser.add_argument("--node_label", type=str, default='drnl')
 # Datasplits
 parser.add_argument("--neg_pos_ratio_test", type=float, default=1.0)
 parser.add_argument("--neg_pos_ratio", type=float, default=1.0)
-parser.add_argument("--train_fraction", type=float, default=1.0)
-parser.add_argument("--test_fraction", type=float, default=None)
+parser.add_argument("--train_fraction", type=float, default=0.8)
+parser.add_argument("--test_fraction", type=float, default=0.2)
 parser.add_argument("--splitting", type=str, default='random')
 parser.add_argument("--valid_fold", type=int, default=1)
 parser.add_argument("--fraction_dist_neg", type=float, default=1.0)
@@ -64,11 +64,7 @@ if args.settings_path is not None:
     settings_module = importlib.import_module(module_path)
     settings = settings_module.settings
 else:
-    settings = {}
-    # Update settings based on remaining arguments
-    for arg, value in vars(args).items():
-        if value is not None and value is not False:
-            settings[arg] = value
+    settings = {arg: value for arg, value in vars(args).items()}
 
 if settings["model"] == "DGCNN":
     if "max_nodes_per_hop" not in settings:
