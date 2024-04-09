@@ -25,7 +25,7 @@ settings = {
     'graph_norm': False,
     'batch_norm': False,
     'dropout': 0.517,
-    'pre-trained_model_path': None,
+    'pre_trained_model_path': None,
     # SEAL training hyperparameters
     'n_epochs': 20,
     'learning_rate': 0.0005,
