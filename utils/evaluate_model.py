@@ -12,7 +12,7 @@ from utils.reactions_info import get_index_to_smiles_dict
 
 
 def predict_links(model_dir, edges, graph_path="", num_workers=None):
-    """Reload pretrained model and test with specified links.
+    """Reload pre-trained model and test with specified links.
     Args:
         model_dir (str): pathway to directory where the trained model is saved
         edges (tensor): tensor with dim (2, n) of edges that will be tested
@@ -37,8 +37,8 @@ def predict_links(model_dir, edges, graph_path="", num_workers=None):
     settings["value"] = converted
     settings = dict(zip(settings["Unnamed: 0"], settings["value"]))
 
-    # Set path to pretrained model and name
-    settings["pre-trained_model_path"] = model_dir
+    # Set path to pre-trained model and name
+    settings["pre_trained_model_path"] = model_dir
     settings["name"] = f"evaluate_model/{model_dir}"
     # Reset parameter so that test is not set to empty when doing make_data_split
     settings["include_in_train"] = None
