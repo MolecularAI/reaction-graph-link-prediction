@@ -1,11 +1,6 @@
-import sys
-
-import numpy as np
-import pandas as pd
 
 import torch
-from scipy.stats import rankdata
-from sklearn.metrics import average_precision_score
+import pandas as pd
 
 
 def hitsK(y_true, y_pred, k):
@@ -94,3 +89,4 @@ def mean_average_precision(y_true, y_pred, edges):
         mean_ap = None
 
     return mean_ap, n_valid_nodes, len(set_nodes)
+

@@ -1,9 +1,9 @@
-import pytest
 
-from torch_trainer import GraphTrainer
 import os
 import torch
 import warnings
+
+from torch_trainer import GraphTrainer
 
 with warnings.catch_warnings():
     warnings.filterwarnings("ignore", category=RuntimeWarning)
@@ -100,3 +100,4 @@ def test_folds():
             assert torch.cat(test_neg_vfs, dim=1).unique(dim=1).shape[1] == int(
                 torch.cat(test_neg_vfs, dim=1).shape[1] / len(valid_fold)
             )
+

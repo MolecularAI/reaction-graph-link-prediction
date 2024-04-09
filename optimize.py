@@ -1,15 +1,15 @@
+
 import os
+import sys
+import json
 import argparse
 import importlib
 
 import optuna
-from optuna.samplers import TPESampler, RandomSampler
+from optuna.samplers import TPESampler
 from torch_trainer import GraphTrainer
 
-import sys
-
 sys.path.insert(0, "settings")
-import json
 
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 
@@ -30,14 +30,7 @@ if args.settings_path is not None:
     settings_module = importlib.import_module(module_path)
     settings = settings_module.settings
 else:
-    settings = {}
-
-# Update settings based on remaining arguments
-for arg, value in vars(args).items():
-    if arg == "settings_path":
-        continue
-    elif value is not None and value is not False:
-        settings[arg] = value
+    settings = {arg: value for arg, value in vars(args).items()}
 
 if settings["model"] == "DGCNN":
     if "max_nodes_per_hop" not in settings:
@@ -161,3 +154,4 @@ study = optuna.create_study(
 )
 
 study.optimize(objective, n_trials=n_trials)
+

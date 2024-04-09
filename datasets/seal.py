@@ -1,7 +1,9 @@
+
 import random
 import numpy as np
 import scipy.sparse as ssp
 from scipy.sparse.csgraph import shortest_path
+
 import torch
 from torch_geometric.data import Data, Dataset
 
@@ -164,3 +166,4 @@ def drnl_node_labeling(adj, src, dst):
     z[torch.isnan(z)] = 0.0
 
     return z.to(torch.long)
+

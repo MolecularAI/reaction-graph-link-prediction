@@ -1,15 +1,16 @@
-import logging
+
 import os
 import os.path as osp
 import time
+import logging
 import warnings
 from collections import namedtuple
 
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
 from tqdm import tqdm
+import matplotlib.pyplot as plt
 
 from sklearn.calibration import calibration_curve
 from sklearn.metrics import roc_auc_score, average_precision_score, roc_curve
@@ -919,7 +920,7 @@ class GraphTrainer:
         self.scores["running"].to_csv(osp.join(self.res_dir, "running_scores.csv"))
         self.predictions.to_csv(osp.join(self.res_dir, "test_predictions.csv"))
         plot_results(
-            final_test=final_test, running_test=running_test, path=self.res_dir
+            final_test=final_test, running_test=running_test, path=self.res_dir, settings=self.settings
         )
 
         logging.info("Finished all runs.")
@@ -1020,13 +1021,15 @@ def plot_calibration_curve(y_true, y_pred, label="Model"):
     return fig, fraction_positives, mean_predicted_value
 
 
-def plot_results(final_test, running_test, path=None):
+def plot_results(final_test, running_test, path=None, settings=None):
     """Plot the results in various ways.
     Args:
         final_test (boolean): If True plot result on test set.
         running_test (boolean): Was running_test used during runs.
         path (string): Pathway to result directory.
     """
+    
+    assert not running_test and settings is None, 'When plotting results, settings needs to be manually supplied.'
 
     scores = pd.read_csv(osp.join(path, "running_scores.csv"))
     # Plot Loss
@@ -1058,8 +1061,8 @@ def plot_results(final_test, running_test, path=None):
         plt.figure()
 
         if running_test and (
-            self.settings["include_in_train"] != "test"
-            and self.settings["include_in_train"] != "valid"
+            settings["include_in_train"] != "test"
+            and settings["include_in_train"] != "valid"
         ):
             test_df = test_df[test_df["model"] == "highest metric"]
             test_df = test_df[test_df["based on"] == "AUC"]
@@ -1111,3 +1114,4 @@ def plot_results(final_test, running_test, path=None):
         # Make calibration curve plot
         fig, _, _ = plot_calibration_curve(y_true, y_pred, label="SEAL Model")
         fig.savefig(osp.join(path, "calibration_curve.png"))
+

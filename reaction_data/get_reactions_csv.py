@@ -1,6 +1,5 @@
-import argparse
-import sys
 
+import argparse
 import warnings
 import numpy as np
 import pandas as pd
@@ -8,11 +7,8 @@ import pandas as pd
 with warnings.catch_warnings():
     warnings.filterwarnings("ignore", category=RuntimeWarning)
     import graph_tool.all as gt
-from utils.reactions_info import (
-    get_reactants_and_product_index,
-    shortest_distance_positive,
-)
-from utils.reactions_info import get_index_to_smiles_dict
+
+from utils.reactions_info import get_reactants_and_product_index, get_index_to_smiles_dict
 
 
 def get_reactions_csv(args):
@@ -58,3 +54,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     get_reactions_csv(args)
+

@@ -1,9 +1,9 @@
-import pytest
 
-from torch_trainer import GraphTrainer
 import os
 import torch
 import warnings
+
+from torch_trainer import GraphTrainer
 
 with warnings.catch_warnings():
     warnings.filterwarnings("ignore", category=RuntimeWarning)
@@ -65,3 +65,4 @@ def test_split_overlaps():
                 assert all_test.shape == all_test.unique(dim=0).shape
                 assert all_neg.shape == all_neg.unique(dim=0).shape
                 assert all_pos.shape == all_pos.unique(dim=0).shape
+

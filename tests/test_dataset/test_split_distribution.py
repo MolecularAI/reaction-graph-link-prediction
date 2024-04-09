@@ -1,8 +1,6 @@
 import pytest
 import torch
 
-from datasets.reaction_graph import ReactionGraph
-from datasets.seal import SEALDynamicDataset
 from torch_trainer import GraphTrainer
 
 

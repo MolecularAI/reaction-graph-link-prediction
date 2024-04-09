@@ -1,33 +1,20 @@
+
 import argparse
-from datetime import datetime
-import sys
 import warnings
-
-import itertools
-import numpy as np
 import pandas as pd
-import torch
-import torch_geometric
-import matplotlib.pyplot as plt
-
-from rdkit import Chem
-from rdkit.Chem import AllChem
+from datetime import datetime
 
 with warnings.catch_warnings():
     warnings.filterwarnings("ignore", category=RuntimeWarning)
     import graph_tool.all as gt
-from graph_tool.topology import shortest_distance
 
 from datasets.reaction_graph import ReactionGraph
-from datasets.seal import SEALDynamicDataset
-from settings import settings
+from settings import settings_reaction_prediction as settings
 from utils.negative_sampling import (
     one_against_all,
     one_against_most_reactive,
 )
 from utils.reactions_info import get_index_to_smiles_dict
-
-from itertools import combinations
 
 # -------------------------------- Functions --------------------------------
 
@@ -214,3 +201,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     main(args)
+

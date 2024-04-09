@@ -1,5 +1,6 @@
+
 import torch
-from torch_geometric.nn import GCNConv, GAE, VGAE
+from torch_geometric.nn import GCNConv
 import torch.nn.functional as F
 
 
@@ -59,3 +60,4 @@ class VariationalLinearEncoder(torch.nn.Module):
     def forward(self, x, edge_index):
         x = F.dropout(x, p=self.dropout, training=self.training)
         return self.conv_mu(x, edge_index), self.conv_logstd(x, edge_index)
+

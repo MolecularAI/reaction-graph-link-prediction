@@ -1,9 +1,10 @@
-import logging
-import sys
-import warnings
-import os
 
+import os
+import sys
+import logging
+import warnings
 import numpy as np
+
 import torch
 from torch_geometric.data import Data, InMemoryDataset
 from torch_geometric.utils import to_undirected
@@ -11,9 +12,7 @@ from torch_geometric.utils import to_undirected
 from utils.negative_sampling import (
     sample_random,
     correct_overlaps,
-    sample_distribution,
-    sample_degree_preserving_distribution,
-    sample_analogs,
+    sample_degree_preserving_distribution
 )
 
 # Import Graph-tool, ignore warnings related to C++ code conversion
@@ -313,3 +312,4 @@ class ReactionGraph(InMemoryDataset):
 
         # Store data objects
         torch.save(self.collate([self.data]), self.processed_paths[0])
+

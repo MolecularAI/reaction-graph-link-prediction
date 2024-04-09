@@ -1,11 +1,13 @@
-import logging
-import numpy as np
+
+import sys
 import torch
+import logging
 import warnings
-from collections import Counter
+import numpy as np
 from tqdm import tqdm
 from sys import maxsize
 from os.path import isfile
+from collections import Counter
 
 with warnings.catch_warnings():
     warnings.filterwarnings("ignore", category=RuntimeWarning)
@@ -517,3 +519,4 @@ def all_against_all(nodes, edge_index, all_pos_edges, include_unconnected=False)
     neg_edges = torch.stack((i_neg, j_neg), dim=0)
 
     return neg_edges
+

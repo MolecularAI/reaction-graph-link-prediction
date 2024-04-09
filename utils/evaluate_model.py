@@ -1,14 +1,9 @@
-from datetime import datetime
-import pandas as pd
-import torch
-import numpy as np
-import matplotlib.pyplot as plt
-import graph_tool.all as gt
-import os.path as osp
+
 import sys
+import pandas as pd
+import os.path as osp
 
 from torch_trainer import GraphTrainer
-from utils.reactions_info import get_index_to_smiles_dict
 
 
 def predict_links(model_dir, edges, graph_path="", num_workers=None):
@@ -69,3 +64,4 @@ def predict_links(model_dir, edges, graph_path="", num_workers=None):
     )
 
     return y_prob, links
+

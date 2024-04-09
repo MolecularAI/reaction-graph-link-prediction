@@ -1,34 +1,19 @@
+
+import sys
+import torch
 import argparse
 import pandas as pd
-import os
-import torch
-import numpy as np
-import matplotlib.pyplot as plt
-import graph_tool.all as gt
-from rdkit import Chem
-from rdkit.Chem import Draw
-import sys
 
-# from torch_trainer import GraphTrainer
-from utils.reactions_info import get_index_to_smiles_dict, get_neo4j_to_index_dict
 from utils.evaluate_model import predict_links
 
 # Parse arguments
 parser = argparse.ArgumentParser(description="Evaluating trained model")
 
-parser.add_argument(
-    "-p",
-    "--model_dir_path",
-    type=str,
-)
-parser.add_argument(
-    "-s", "--save_path", type=str, default="predictions_current_best.csv"
-)
+parser.add_argument("-p", "--model_dir_path", type=str)
+parser.add_argument("-s", "--save_path", type=str, default="predictions_current_best.csv")
 parser.add_argument("-e", "--edges_path", type=str, default=None)
 parser.add_argument("-g", "--graph_path", type=str, default="")
-parser.add_argument(
-    "-t", "--train_edges_path", type=str, default=None
-)  # filename from data/TRAINING_MODEL_NAME/processed/processed_data.pt expected
+parser.add_argument("-t", "--train_edges_path", type=str, default=None)  # filename from data/TRAINING_MODEL_NAME/processed/processed_data.pt expected
 parser.add_argument("-l", "--label", type=int, default=None)
 parser.add_argument("-w", "--num_workers", type=int, default=None)
 
@@ -93,3 +78,4 @@ df_edges["y prob"] = y_prob
 df_edges["edge"] = edges
 
 df_edges.to_csv(save_path)
+

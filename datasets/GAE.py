@@ -1,10 +1,6 @@
-import random
-import numpy as np
-import scipy.sparse as ssp
-from scipy.sparse.csgraph import shortest_path
 
 import torch
-from torch_geometric.data import Data, Dataset
+from torch_geometric.data import Dataset
 
 
 class GeneralDataset(Dataset):
@@ -37,3 +33,4 @@ class GeneralDataset(Dataset):
     def get(self, idx):
 
         return self.links[idx], self.labels[idx]
+

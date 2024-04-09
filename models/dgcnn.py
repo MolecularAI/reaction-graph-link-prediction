@@ -1,3 +1,4 @@
+
 import math
 import torch
 import torch.nn.functional as F
@@ -127,3 +128,4 @@ class DGCNN(torch.nn.Module):
         x = self.lin2(x)
 
         return x
+

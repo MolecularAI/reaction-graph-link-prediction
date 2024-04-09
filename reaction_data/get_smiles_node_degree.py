@@ -1,5 +1,5 @@
+
 import warnings
-import numpy as np
 import pandas as pd
 
 with warnings.catch_warnings():
@@ -27,3 +27,4 @@ save_file = "smiles_total_degree.csv"
 graph_path = "graphs/monopartite/molecule_with_product_graph_5Fold.gt"
 
 get_molecule_degree(graph_path, save_file)
+
