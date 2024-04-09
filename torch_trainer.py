@@ -387,24 +387,24 @@ class GraphTrainer:
         )
 
         # If provided, load pretrained model
-        if self.settings["pre-trained_model_path"] is not None:
+        if self.settings["pre_trained_model_path"] is not None:
             # Update in how models / optimizers are saved and loaded
-            if osp.isfile(self.settings["pre-trained_model_path"]):
+            if osp.isfile(self.settings["pre_trained_model_path"]):
                 # try: # after update model saved as dicts
-                checkpoint = torch.load(self.settings["pre-trained_model_path"])
+                checkpoint = torch.load(self.settings["pre_trained_model_path"])
                 model.load_state_dict(checkpoint["model_state_dict"])
                 optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
             # except: # before update saved separately
             elif osp.isfile(
                 osp.join(
-                    self.settings["pre-trained_model_path"],
+                    self.settings["pre_trained_model_path"],
                     "best_AUC_model_checkpoint.pth",
                 )
             ):
                 model.load_state_dict(
                     torch.load(
                         osp.join(
-                            self.settings["pre-trained_model_path"],
+                            self.settings["pre_trained_model_path"],
                             "best_AUC_model_checkpoint.pth",
                         )
                     )
@@ -412,7 +412,7 @@ class GraphTrainer:
                 optimizer.load_state_dict(
                     torch.load(
                         osp.join(
-                            self.settings["pre-trained_model_path"],
+                            self.settings["pre_trained_model_path"],
                             "best_AUC_optimizer_checkpoint.pth",
                         )
                     )
