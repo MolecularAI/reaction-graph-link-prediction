@@ -10,7 +10,7 @@ os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 # Parse argments for updating
 parser = argparse.ArgumentParser(description="SEAL")
 parser.add_argument("-s", "--settings_path", type=str, default=None)
-parser.add_argument("-n", "--name", type=str, default="no_name")
+parser.add_argument("-n", "--name", type=str, default='no_name')
 parser.add_argument("-g", "--graph_path", type=str, default=None)
 parser.add_argument("--pre_trained_model_path", type=str, default=None)
 # Subgraphs in SEAL
@@ -65,17 +65,13 @@ if args.settings_path is not None:
     settings_module = importlib.import_module(module_path)
     settings = settings_module.settings
 else:
-    settings = {arg: value for arg, value in vars(args).items()}
+    settings = vars(args)
 
-if settings["model"] == "DGCNN":
-    if "max_nodes_per_hop" not in settings:
-        settings["max_nodes_per_hop"] = None
+if settings["model"] == "DGCNN" and "max_nodes_per_hop" not in settings:
+    settings["max_nodes_per_hop"] = None
 
 # Determine path of graph based on above settings
-if args.graph_path is not None:
-    settings["graph_path"] = args.graph_path
-elif "graph_path" not in settings:
-    raise ValueError("-g --graph_path not provided as input or in settings file")
+assert settings["graph_path"] is not None, "-g --graph_path not provided as input or in settings file"
 
 trainer = GraphTrainer(settings)
 _ = trainer.run(running_test=False, final_test=True)
