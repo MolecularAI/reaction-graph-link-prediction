@@ -9,7 +9,6 @@ os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 
 # Parse argments for updating
 parser = argparse.ArgumentParser(description="SEAL")
-parser.add_argument("-s", "--settings_path", type=str, default=None)
 parser.add_argument("-n", "--name", type=str, default='no_name')
 parser.add_argument("-g", "--graph_path", type=str, default=None)
 parser.add_argument("--pre_trained_model_path", type=str, default=None)
@@ -21,8 +20,7 @@ parser.add_argument("--node_label", type=str, default='drnl')
 # Datasplits
 parser.add_argument("--neg_pos_ratio_test", type=float, default=1.0)
 parser.add_argument("--neg_pos_ratio", type=float, default=1.0)
-parser.add_argument("--train_fraction", type=float, default=0.8)
-parser.add_argument("--test_fraction", type=float, default=0.2)
+parser.add_argument("--train_fraction", type=float, default=1.0)
 parser.add_argument("--splitting", type=str, default='random')
 parser.add_argument("--valid_fold", type=int, default=1)
 parser.add_argument("--fraction_dist_neg", type=float, default=1.0)
@@ -58,14 +56,7 @@ parser.add_argument("--p_threshold", type=float, default=0.9)
 parser.add_argument("--pos_weight_loss", type=float, default=1.0)
 
 args = parser.parse_args()
-
-# Read settings from supplied settings.txt file
-if args.settings_path is not None:
-    module_path = str(args.settings_path)
-    settings_module = importlib.import_module(module_path)
-    settings = settings_module.settings
-else:
-    settings = vars(args)
+settings = vars(args)
 
 if settings["model"] == "DGCNN" and "max_nodes_per_hop" not in settings:
     settings["max_nodes_per_hop"] = None
