@@ -26,10 +26,7 @@ class ReactionGraph(InMemoryDataset):
         self.settings = settings
 
         self.percent_edges = settings["train_fraction"]
-        if "test_fraction" in settings.keys():
-            self.percent_edges_test = settings["test_fraction"]
-        else:
-            self.percent_edges_test = settings["train_fraction"]
+        self.percent_edges_test = settings["train_fraction"]
 
         self.neg_pos_ratio = settings["neg_pos_ratio"]
         self.neg_pos_ratio_test = settings["neg_pos_ratio_test"]
