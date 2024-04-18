@@ -1,4 +1,4 @@
-
+name: link-prediction
 channels:
   - pytorch
   - conda-forge
