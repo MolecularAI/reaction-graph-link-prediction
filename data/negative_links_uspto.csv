@@ -1,4 +1,4 @@
-,Source,Target,Reactant smiles 1,Reactant smiles 2,y true
+,Reactant smiles 1,Reactant smiles 2,Source,Target,y true
 0,O=CCCc1cccc(Br)c1,c1cnc(N2CCNCC2)nc1,171057,104283,0
 1,Brc1cncc(N2CCCNCC2)c1,CN(C)CCCCl,224583,106564,0
 2,BrCCc1c[nH]c2ccccc12,c1csc(N2CCNCC2)n1,105709,218004,0

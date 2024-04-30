@@ -69,13 +69,7 @@ settings = vars(args)
 n_trials = args.n_trials
 study_name = args.study_name
 
-# Parameter file for optimisation
-#if args.optimisation_parameters_path is None:
-#    raise ValueError("-p --optimisation_parameters_path not provided as input")
-
-write_params_to_file = False
-
-if write_params_to_file:
+if not os.path.exists(args.optimisation_parameters_path):
     params_dictionary = {}
     if settings["model"] == "DGCNN":
         params_dictionary["num_hops"] = [1, 2]
@@ -97,8 +91,8 @@ if write_params_to_file:
     params_dictionary["startup_trials"] = 50
 
     json.dump(params_dictionary, open(args.optimisation_parameters_path, "w"))
-    print("Done writing optimisation parameters. Exiting.")
-    sys.exit()
+    #print("Done writing optimisation parameters. Exiting.")
+    #sys.exit()
 else:
     params_dictionary = json.load(open(args.optimisation_parameters_path))
 

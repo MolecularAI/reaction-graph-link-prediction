@@ -55,10 +55,10 @@ $ python optimize.py --graph_path [PATH-TO-GRAPH]
 ### Reproducibility
 Once a SEAL model has been trained the probability of novel links can be predicted as follows,
 ```bash
-$ python predict_links.py --model_dir_path [PATH-TO-TRAINED-SEAL] --save_path [SAVE-PATH] --graph_path [PATH-TO-GRAPH] --edges_path data/example-links.csv
+$ python predict_links.py --model_dir_path [PATH-TO-TRAINED-SEAL] --save_path [SAVE-PATH] --graph_path [PATH-TO-GRAPH] --edges_path data/negative_links_uspto.csv
 ```
 
-Exchange ```data/example-links.csv``` with your potential links.
+Exchange ```data/negative_links_uspto.csv``` with your potential links.
 
 ### Parallelization / Runtime
 Most optimally, run with GPU available. In addition, SEAL-based link prediction is parallelizable on CPUs. Negative links generation by default uses a node degree distribution-preserving sampling function (sample_degree_preserving_distribution) which can take a long time depending on graph size. However, it only needs to be run once for a given link-sampling seed after which it is stored in ```data/```. Alternatively, an approximating function (sample_distribution) can be used with quicker runtime.

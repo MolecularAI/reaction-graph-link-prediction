@@ -1,1 +1,1 @@
-
+{"num_hops": [1, 2], "sortpool_k": [1, 1000], "hidden_channels": [4, 8, 16, 32, 64, 128, 256], "num_layers": [1, 12], "learning_rate": [0.0001, 0.001, 0.01, 0.1], "dropout": [0.0, 0.99], "decay": [0.0, 0.99], "startup_trials": 50}
