@@ -408,15 +408,8 @@ class GraphTrainer:
                             self.settings["pre_trained_model_path"],
                             "best_AUC_model_checkpoint.pth",
                         )
-                    )
-                )
-                optimizer.load_state_dict(
-                    torch.load(
-                        osp.join(
-                            self.settings["pre_trained_model_path"],
-                            "best_AUC_optimizer_checkpoint.pth",
-                        )
-                    )
+                    ),
+                    strict=False
                 )
             else:
                 logging.error("Cannot load pre-trained_model. Check path in settings.")
