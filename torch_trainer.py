@@ -1021,8 +1021,6 @@ def plot_results(final_test, running_test, path=None, settings=None):
         running_test (boolean): Was running_test used during runs.
         path (string): Pathway to result directory.
     """
-    
-    assert not running_test and settings is None, 'When plotting results, settings needs to be manually supplied.'
 
     scores = pd.read_csv(osp.join(path, "running_scores.csv"))
     # Plot Loss
