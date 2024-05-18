@@ -45,13 +45,6 @@ Optional settings can be provided as additional arguments. The training script g
     - Test metrics and test predictions in csv format. 
     - A csv settings file of the hyperparameters used for training.
 
-### Hyperparameter optimization
-Use our optimized parameters by default or run a new hyperparameter optimization with,
-
-```bash
-$ python optimize.py --graph_path [PATH-TO-GRAPH]
-```
-
 ### Reproducibility
 Once a SEAL model has been trained the probability of novel links can be predicted as follows,
 ```bash
