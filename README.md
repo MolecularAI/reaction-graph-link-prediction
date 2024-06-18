@@ -81,12 +81,14 @@ The software is licensed under the Apache 2.0 license (see [LICENSE](https://git
 
 Please cite our work using the following reference.
 ```bibtex
-@article{rydholm2023expanding,
-    title={{Expanding the chemical space using a Chemical Reaction Knowledge Graph}},
-    author={Rydholm, Emma  and Bastys, Tomas and Svensson, Emma and Kannas, Christos and Engkvist, Ola and Kogej, Thierry},
-    journal={ChemRxiv},
-    doi={10.26434/chemrxiv-2023-qdvmm},
-    year={2023}
+@article{rydholm2024expanding,
+    author = {Rydholm, Emma and Bastys, Tomas and Svensson, Emma and Kannas, Christos and Engkvist, Ola and Kogej, Thierry},
+    title  =  {{Expanding the chemical space using a chemical reaction knowledge graph}},
+    journal  = {Digital Discovery},
+    year  = {2024},
+    pages  = {-},
+    publisher  = {RSC},
+    doi  = {10.1039/D3DD00230F}
 }
 ```
 
