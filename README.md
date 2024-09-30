@@ -92,6 +92,9 @@ Please cite our work using the following reference.
 }
 ```
 
+## Funding
+This work was partially supported by the Wallenberg Artificial Intelligence, Autonomous Systems, and Software Program (WASP), funded by the Knut and Alice Wallenberg Foundation. Additionally, this work was partially funded by the European Union's Horizon 2020 research and innovation program under the Marie Sklodowska-Curie Innovative Training Network European Industrial Doctorate grant agreement No. 956832 “Advanced machine learning for Innovative Drug Discovery”.
+
 ## References:
 [1] M. Zhang and Y. Chen, "Link prediction based on graph neural networks," Advances in neural information processing systems 31, 2018.
 
